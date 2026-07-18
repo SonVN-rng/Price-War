@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-dark text-white font-mono;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(255, 0, 60, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+    /* Prevent scrolling on the body to keep overlays in place */
+    overflow: hidden;
+  }
+
+  /* CRT Scanlines Overlay */
+  body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.15) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 9998;
+    pointer-events: none;
+  }
+
+  /* Vignette & Screen Curvature Overlay */
+  body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-cyber-panel/80 backdrop-blur-md border border-cyber-border rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.1)];
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+  
+  .text-glow-red {
+    text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+  }
+
+  .text-glow-orange {
+    text-shadow: 0 0 10px rgba(255, 154, 0, 0.5);
+  }
+}
