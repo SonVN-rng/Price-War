@@ -54,7 +54,7 @@ class AudioEngine {
     this.stopMenuBGM(); // Dừng nhạc sảnh chờ trước khi bật nhạc game
     
     if (!this.gameAudio) {
-      this.gameAudio = new Audio(`${import.meta.env.BASE_URL}game-bgm.mp3`);
+      this.gameAudio = new Audio('./game-bgm.mp3');
       this.gameAudio.loop = true;
       this.gameAudio.volume = 0.25;
     }
@@ -93,7 +93,7 @@ class AudioEngine {
     this.stopResultBGM(); // Stop any leftover result music
     
     if (!this.menuAudio) {
-      this.menuAudio = new Audio(`${import.meta.env.BASE_URL}menu-bgm.mp3`);
+      this.menuAudio = new Audio('./menu-bgm.mp3');
       this.menuAudio.loop = true;
       this.menuAudio.volume = 0.25; // Default volume for menu
     }
@@ -121,8 +121,7 @@ class AudioEngine {
     if (this.resultAudio) {
       this.resultAudio.pause();
     }
-    
-    this.resultAudio = new Audio(`${import.meta.env.BASE_URL}${result}-bgm.mp3`);
+    this.resultAudio = new Audio(`./${result}-bgm.mp3`);
     this.resultAudio.loop = true;
     this.resultAudio.volume = 0.25;
     
